@@ -1,9 +1,5 @@
 #!/usr/bin/env python
 # coding: utf-8
-
-# In[9]:
-
-
 import pandas as pd
 import pywikibot 
 import re
