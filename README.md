@@ -1,2 +1,6 @@
 # YDEA
 Yale Digital Dura Europos Archive, Sponsored by ARCHAIA Program for the Study of Ancient and Premodern Cultures and Societies 
+The goal of this project is in two parts. The first is to create a linked open data repository for items excavated in Dura-Europos and held in the Yale University collections (this includes the Yale University Art Gallery, the Beinecke Rare Book and Manuscript Library, and the Peabody Museum). The second is to create a front-end interface that allows users to query for particular items. 
+In the first part, we have normalised the data, parsed out expressions in the label and created new columns in a csv output which can then be reconciled in a larger database. These NLP transformations are documented in the file "date_normalisation.py".
+In the second part, we have created a bot using Pywikibot to batchupload a number of items into Wikidata which serves as a useful repository to host the data initially. The scripts for this bot are contained in Bot_Upload which uses an OATH password in PAWS to iterate over items in our data and add statements into Wikidata. 
+In the third part, we will design a user interactive web interface that will generate and return the SPARQL endpoint queries. 
