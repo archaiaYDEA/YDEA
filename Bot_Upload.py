@@ -25,10 +25,6 @@ headers = {"User" : "DuraEuroposBot/0.0 (https://www.wikidata.org/wiki/User_talk
 read = requests.get(URL, headers=headers)
 read=read.json()
 
-
-# In[ ]:
-
-
 items = []
 ids = []
 for item in read['results']['bindings']:
