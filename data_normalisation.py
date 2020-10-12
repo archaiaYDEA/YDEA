@@ -12,6 +12,11 @@ data_frame = data_frame.replace(r'\\r',' ', regex=True)
 data_frame = data_frame.replace(r'\r',' ', regex=True)
 data_frame = data_frame.replace(r'  ',' ', regex=True)
 
+#TURN FLOAT OBJECT NUMBERS TO STR
+data_frame['Sort']=data_frame['Sort'].str.replace(r'([0-9])( )+?([0-9])',r'\1.\3')
+data_frame['Sort']=data_frame['Sort'].str.replace(r'( )+','-')
+data_frame['ObjectNumber'] = 'inv. ' + data_frame['Sort']
+
 #ADD COLLECTION
 data_frame['Collection'] = 'Yale University Art Gallery'
 
@@ -24,14 +29,6 @@ data_frame.drop(data_frame.loc[data_frame['Culture'].str.contains("american")].i
 #data_frame.drop(data_frame.loc[data_frame['Medium'].str.contains("plaster cast")].index, inplace=True)
 #data_frame.loc[data_frame['Classification'].str.contains("Numismatics")].to_csv('/Users/kyleconrau-lewis/Google Drive/dura_europos/coins.csv',index=False)
 data_frame.drop(data_frame.loc[data_frame['Classification'].str.contains("Numismatics")].index, inplace=True)
-
-
-#NORMALISE INVENTORY NUMBERS
-data_frame['ObjectNumber'] = data_frame['ObjectNumber'].str.replace('a', '.a')
-data_frame['ObjectNumber'] = data_frame['ObjectNumber'].str.replace('..', '.', regex=False)
-data_frame['ObjectNumber'] = data_frame['ObjectNumber'].str.replace(' ', '')
-data_frame['ObjectNumber'] = data_frame['ObjectNumber'].str.replace('-\.', '-')
-data_frame['ObjectNumber'] = data_frame['ObjectNumber'].str.replace('\.-', '-')
                  
 #MAKERS (remove unknown artists) # what to do with Roman?
 data_frame['Makers'] = data_frame['Makers'].str.replace('Maker: Unknown', 'anonymous') 
